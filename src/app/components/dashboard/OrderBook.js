@@ -161,8 +161,8 @@ const OrderBook = ({ pair }) => {
   return (
     <div className="order-book bg-gray-800 text-white relative">
       {error && (
-        <div className="error-container bright-red mt-10 p-4 absolute top-0 left-0 w-full">
-          <div className="error-message text-center">{error}</div>
+        <div className="error-container bright-red mt-10 p-4 absolute top-10 left-0 w-full">
+          <div className="error-message text-center">No Data available</div>
         </div>
       )}
       <div className="order-container">
@@ -198,35 +198,37 @@ const OrderBook = ({ pair }) => {
           </div>
         </div>
 
-        <div className="aggregation py-2 px-4 flex justify-end items-center">
-          <label htmlFor="aggregation" className="block mr-2 text-gray-400">Aggregation</label>
-          <div className="flex items-center">
-            <button 
-              onClick={decreaseIncrement} 
-              disabled={isDecrementDisabled}
-              className={`px-3 py-1 ${isDecrementDisabled ? 'bg-gray-600 cursor-not-allowed' : 'bg-gray-600 hover:bg-gray-500'} text-white rounded-l transition`}
-            >
-              -
-            </button>
-            <select
-              id="aggregation"
-              value={aggregationIncrement}
-              onChange={handleDropdownChange}
-              className="agg-dd px-4 py-2 border border-gray-600 rounded bg-gray-700 text-white focus:outline-none transition"
-            >
-              {generateDropdownOptions.map(option => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-            <button 
-              onClick={increaseIncrement} 
-              disabled={isIncrementDisabled}
-              className={`px-3 py-1 ${isIncrementDisabled ? 'bg-gray-600 cursor-not-allowed' : 'bg-gray-600 hover:bg-gray-500'} text-white rounded-r transition`}
-            >
-              +
-            </button>
+        {!error && ( // Conditionally render the aggregation controls
+          <div className="aggregation py-2 px-4 flex justify-end items-center">
+            <label htmlFor="aggregation" className="block mr-2 text-gray-400">Aggregation</label>
+            <div className="flex items-center">
+              <button 
+                onClick={decreaseIncrement} 
+                disabled={isDecrementDisabled}
+                className={`px-3 py-1 ${isDecrementDisabled ? 'bg-gray-600 cursor-not-allowed' : 'bg-gray-600 hover:bg-gray-500'} text-white rounded-l transition`}
+              >
+                -
+              </button>
+              <select
+                id="aggregation"
+                value={aggregationIncrement}
+                onChange={handleDropdownChange}
+                className="agg-dd px-4 py-2 border border-gray-600 rounded bg-gray-700 text-white focus:outline-none transition"
+              >
+                {generateDropdownOptions.map(option => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+              <button 
+                onClick={increaseIncrement} 
+                disabled={isIncrementDisabled}
+                className={`px-3 py-1 ${isIncrementDisabled ? 'bg-gray-600 cursor-not-allowed' : 'bg-gray-600 hover:bg-gray-500'} text-white rounded-r transition`}
+              >
+                +
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

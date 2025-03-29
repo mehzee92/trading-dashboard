@@ -65,6 +65,10 @@ body {
 }
 
 .top-of-book {
+  .error {
+    width: 500px;
+    max-width: 500px;
+  }
   .select-container {
     width: 180px;
     height: 50px;

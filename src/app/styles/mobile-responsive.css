@@ -49,6 +49,11 @@
   }
 
   .top-of-book {
+
+    .error {
+      margin-top: 3rem;
+      width: 100%;
+    }
     .top-con {
       display: block;
       .book-data {

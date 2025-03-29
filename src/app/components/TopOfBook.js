@@ -130,7 +130,9 @@ const TopOfBook = ({ onPairChange }) => {
           {isLoading ? (
             <p></p>
           ) : error ? (
-            <p></p>
+            <div className="error bright-red">
+              {error}
+            </div>
           ) : (
             <>
               <div className="dis-con">
